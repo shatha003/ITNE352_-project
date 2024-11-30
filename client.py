@@ -35,5 +35,13 @@ class NewsClient:
                     print("Invalid request type.")
             except Exception as e:
                 print(f"An error occurred: {str(e)}")
+    
+    def display_request_types(self):
+        #Display the list of main request types (options) for the user.
+        print("Request Types:")
+        for i, request_type in enumerate(self.request_types, start=1):
+            print(f"{i}. {request_type}")
+
+
         
 
