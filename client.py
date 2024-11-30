@@ -99,6 +99,19 @@ class NewsClient:
                 print(f"- {article['title']} (Source: {article['source']['name']}, Author: {article['author']})")
         else:
             print("No articles found or error in request.")
+    
+    
+    def list_sources(self):
+        #Method to handle listing sources based on user criteria.
+        while True:
+            self.display_source_submenu_types()
+            submenu_type_num = int(input("Enter submenu type (1-4): "))
+
+            if 1 <= submenu_type_num <= len(self.source_submenu_types):
+                submenu_type = self.source_submenu_types[submenu_type_num - 1]
+                self.fetch_sources(submenu_type)
+            else:
+                print("Invalid source submenu type.")
 
 
         
