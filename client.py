@@ -100,7 +100,7 @@ class NewsClient:
         else:
             print("No articles found or error in request.")
     
-    
+
     def list_sources(self):
         #Method to handle listing sources based on user criteria.
         while True:
@@ -112,6 +112,15 @@ class NewsClient:
                 self.fetch_sources(submenu_type)
             else:
                 print("Invalid source submenu type.")
+    
+
+    def display_source_submenu_types(self):
+        #Display the list of submenus available for listing sources.
+        print("Source Submenu Types:")
+        self.source_submenu_types = ["category", "language", "country", "Back to main menu"]
+        for i, submenu_type in enumerate(self.source_submenu_types, start=1):
+            print(f"{i}. {submenu_type}")
+
 
 
         
