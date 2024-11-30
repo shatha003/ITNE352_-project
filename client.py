@@ -41,6 +41,25 @@ class NewsClient:
         print("Request Types:")
         for i, request_type in enumerate(self.request_types, start=1):
             print(f"{i}. {request_type}")
+    
+    def search_headlines(self):
+        # handle searching for headlines based on various criteria.
+        while True:
+            self.display_headline_submenu_types()
+            submenu_type_num = int(input("Enter submenu type (1-6): "))
+
+            if 1 <= submenu_type_num <= len(self.headline_submenu_types):
+                submenu_type = self.headline_submenu_types[submenu_type_num - 1]
+                self.process_headline_submenu_type(submenu_type)
+            else:
+                print("Invalid headline submenu type.")
+
+    def display_headline_submenu_types(self):
+        #Display the list of submenus available for headline search.
+        print("Headline Submenu Types:")
+        self.headline_submenu_types = ["country", "category", "language", "sources", "keyword", "page_size"]
+        for i, submenu_type in enumerate(self.headline_submenu_types, start=1):
+            print(f"{i}. {submenu_type}")
 
 
         
