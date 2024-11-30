@@ -81,6 +81,24 @@ class NewsClient:
         elif submenu_type == "page_size":
             page_size = input("Enter (page size) please: ")
             self.fetch_headlines(submenu_type, page_size)
+    
+    def fetch_headlines(self, submenu_type, value):
+        #Fetch the headlines based on submenu type and value, then print the results. 
+        request = f"Search Headlines;{submenu_type};{value}"
+
+        # Send the request to the server
+        self.client_socket.sendall(request.encode())
+
+        # Receive the response from the server
+        response = json.loads(self.client_socket.recv(1024).decode())
+
+        # Display the fetched headlines
+        if response.get('status') == 'ok':
+            Console().print(f"[bold green]Fetched {len(response['articles'])} headlines![/bold green]")
+            for article in response['articles']:
+                print(f"- {article['title']} (Source: {article['source']['name']}, Author: {article['author']})")
+        else:
+            print("No articles found or error in request.")
 
 
         
