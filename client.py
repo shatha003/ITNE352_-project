@@ -122,6 +122,35 @@ class NewsClient:
             print(f"{i}. {submenu_type}")
 
 
+    def fetch_sources(self, submenu_type):
+        #Fetch the sources based on the selected submenu type.
+        if submenu_type == "category":
+            category = input("Enter (category) please: ")
+            request = f"List Sources;{submenu_type};{category}"
+        elif submenu_type == "language":
+            language = input("Enter (language) please: ")
+            request = f"List Sources;{submenu_type};{language}"
+        elif submenu_type == "country":
+            country = input("Enter (country) please: ")
+            request = f"List Sources;{submenu_type};{country}"
+        else:
+            return
+
+        # Send the request to the server
+        self.client_socket.sendall(request.encode())
+
+        # Receive the response from the server
+        response = json.loads(self.client_socket.recv(1024).decode())
+
+        # Display the fetched sources
+        if response.get('status') == 'ok':
+            Console().print(f"[bold green]Fetched {len(response['sources'])} sources![/bold green]")
+            for source in response['sources']:
+                print(f"- {source['name']} (Category: {source['category']}, Language: {source['language']}, Country: {source['country']})")
+        else:
+            print("No sources found or error in request.")
+
+
 
         
 
