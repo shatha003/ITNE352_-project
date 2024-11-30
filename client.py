@@ -151,6 +151,13 @@ class NewsClient:
             print("No sources found or error in request.")
 
 
+if __name__ == "__main__":
+    HOST = 'localhost'  
+    PORT = 4000         
+    news_client = NewsClient(HOST, PORT)  
+    news_client.run()  
+
+
 
         
 
