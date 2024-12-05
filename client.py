@@ -82,6 +82,9 @@ class NewsClient:
         elif submenu_type == "page_size":
             page_size = input("Enter (page size) please: ")
             self.fetch_headlines(submenu_type, page_size)
+        if submenu_type == "Back to main menu":
+            return
+
     
     def fetch_headlines(self, submenu_type, value):
         request = json.dumps({"option": "headlines", "params": {submenu_type: value}})
