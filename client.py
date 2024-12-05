@@ -30,6 +30,7 @@ class NewsClient:
                         self.list_sources()
                     elif request_type == "Quit":
                         print("See you, Goodbye!")
+                        self.client_socket.sendall("quit".encode())
                         break
                 else:
                     print("Invalid request type.")
@@ -92,7 +93,7 @@ class NewsClient:
 
         # Display the fetched headlines
         response = json.loads(self.client_socket.recv(1024).decode())
-        
+
         if isinstance(response, list):  # Successful response
              for item in response:
                  print(f"- {item['title']} (Source: {item['source_name']})")  # For headlines
