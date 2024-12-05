@@ -7,7 +7,11 @@ import json
 HOST = "127.0.0.1"  
 PORT = 12346        
 API_KEY = "43edc4ea317f4f048115f3287c4789fb"  
-MAX_CLIENTS = 3     
+MAX_CLIENTS = 3 
+
+VALID_LANGUAGES = {"en", "ar"}
+VALID_COUNTRIES = {"au", "ca", "jp", "ae", "sa", "kr", "us", "ma"}
+VALID_CATEGORIES = {"business", "general", "health", "science", "sports", "technology"}
 
 # fetch data from NewsAPI
 def fetch_news_data(endpoint, params):
@@ -22,7 +26,18 @@ def fetch_news_data(endpoint, params):
         print(f"[ERROR] API Request Failed: {e}")
         return {"status": "error", "message": str(e)}
 
-# andle client connection
+def validate_params(params):
+    errors = []
+    if "language" in params and params["language"] not in VALID_LANGUAGES:
+        errors.append(f"Invalid language: {params['language']} (Allowed: en, ar)")
+    if "country" in params and params["country"] not in VALID_COUNTRIES:
+        errors.append(f"Invalid country: {params['country']} (Allowed: au, ca, jp, ae, sa, kr, us, ma)")
+    if "category" in params and params["category"] not in VALID_CATEGORIES:
+        errors.append(f"Invalid category: {params['category']} (Allowed: business, general, health, science, sports, technology)")
+    return errors
+
+
+# handle client connection
 def handle_client(client_socket, client_address):
    
     try:
@@ -42,6 +57,16 @@ def handle_client(client_socket, client_address):
             print(f"[INFO] {client_name} requested {option} with params: {params}")
 
             # choose endpoint based on request
+            if option == "headlines":
+                endpoint = "top-headlines"
+            elif option == "sources":
+                endpoint = "sources"
+            else:
+                response = {"status": "error", "message": "Invalid option"}
+                client_socket.send(json.dumps(response).encode())
+                continue
+
+             # Choose endpoint based on request
             if option == "headlines":
                 endpoint = "top-headlines"
             elif option == "sources":
