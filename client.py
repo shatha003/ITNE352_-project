@@ -127,7 +127,13 @@ class NewsClient:
         self.client_socket.sendall(request.encode())
 
         # Receive the response from the server
-        response = json.loads(self.client_socket.recv(1024).decode())
+        try:
+            response = self.client_socket.recv(1024).decode()
+            response = json.loads(response)
+        except socket.timeout:
+            print("The server took too long to respond. Please try again later.")
+        except json.JSONDecodeError:
+            print("Error decoding server response.")
 
         # Display the fetched sources
         if response.get('status') == 'ok':
