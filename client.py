@@ -9,6 +9,7 @@ class NewsClient:
         self.host = host
         self.port = port
         self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.client_socket.settimeout(10)  # Timeout in seconds
         self.client_socket.connect((self.host, self.port))
         self.client_name = input("Enter your name: ")
         self.client_socket.sendall(self.client_name.encode())
@@ -90,8 +91,6 @@ class NewsClient:
         request = json.dumps({"option": "headlines", "params": {submenu_type: value}})
         self.client_socket.sendall(request.encode())
 
-
-       
         response = json.loads(self.client_socket.recv(1024).decode())
 
         if isinstance(response, list):  # Successful response
@@ -127,13 +126,13 @@ class NewsClient:
         #Fetch the sources based on the selected submenu type.
         if submenu_type == "category":
             category = input("Enter (category) please: ")
-            request = f"List Sources;{submenu_type};{category}"
+            request = json.dumps({"option": "sources", "params": {submenu_type: category}})
         elif submenu_type == "language":
             language = input("Enter (language) please: ")
-            request = f"List Sources;{submenu_type};{language}"
+            request = json.dumps({"option": "sources", "params": {submenu_type: category}})
         elif submenu_type == "country":
             country = input("Enter (country) please: ")
-            request = f"List Sources;{submenu_type};{country}"
+            request = json.dumps({"option": "sources", "params": {submenu_type: category}})
         else:
             return
 
