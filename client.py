@@ -83,20 +83,22 @@ class NewsClient:
             self.fetch_headlines(submenu_type, page_size)
     
     def fetch_headlines(self, submenu_type, value):
-
         request = json.dumps({"option": "headlines", "params": {submenu_type: value}})
         self.client_socket.sendall(request.encode())
+
 
         # Receive the response from the server
         response = json.loads(self.client_socket.recv(1024).decode())
 
         # Display the fetched headlines
-        if response.get('status') == 'ok':
-            Console().print(f"[bold green]Fetched {len(response['articles'])} headlines![/bold green]")
-            for article in response['articles']:
-                print(f"- {article['title']} (Source: {article['source']['name']}, Author: {article['author']})")
-        else:
-            print("No articles found or error in request.")
+        response = json.loads(self.client_socket.recv(1024).decode())
+        
+        if isinstance(response, list):  # Successful response
+             for item in response:
+                 print(f"- {item['title']} (Source: {item['source_name']})")  # For headlines
+        else:  # Error response
+            print("Error:", response.get('message', 'Unknown error'))
+
     
 
     def list_sources(self):
