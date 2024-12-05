@@ -83,10 +83,8 @@ class NewsClient:
             self.fetch_headlines(submenu_type, page_size)
     
     def fetch_headlines(self, submenu_type, value):
-        #Fetch the headlines based on submenu type and value, then print the results. 
-        request = f"Search Headlines;{submenu_type};{value}"
 
-        # Send the request to the server
+        request = json.dumps({"option": "headlines", "params": {submenu_type: value}})
         self.client_socket.sendall(request.encode())
 
         # Receive the response from the server
