@@ -1,0 +1,4 @@
+{
+    "status": "error",
+    "message": "400 Client Error: Bad Request for url: https://newsapi.org/v2/top-headlines?page_size=12"
+}

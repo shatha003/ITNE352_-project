@@ -59,16 +59,34 @@ class NewsClient:
     def display_headline_submenu_types(self):
         #Display the list of submenus available for headline search.
         print("Headline Submenu Types:")
-        self.headline_submenu_types = ["country", "category", "language", "sources", "keyword", "page_size", "Back to main menu"]
-        for i, submenu_type in enumerate(self.headline_submenu_types, start=1):
-            print(f"{i}. {submenu_type}")
+        self.headline_submenu_types = [
+        "language (Allowed: en, ar)",
+        "country (Allowed: au, ca, jp, ae, sa, kr, us, ma)",
+        "category (Allowed: business, general, health, science, sports, technology)",
+        "sources",
+        "keyword",
+        "page_size",
+        "Back to main menu",
+    ]
+    for i, submenu_type in enumerate(self.headline_submenu_types, start=1):
+        print(f"{i}. {submenu_type}")
     
     def process_headline_submenu_type(self, submenu_type):
         #Process the submenu input and fetch headlines accordingly.
         if submenu_type == "Back to main menu":
             return
-        
-        value = input(f"Enter {submenu_type} please: ")
+
+        valid_values = {
+        "language": ["en", "ar"],
+        "country": ["au", "ca", "jp", "ae", "sa", "kr", "us", "ma"],
+        "category": ["business", "general", "health", "science", "sports", "technology"],
+    }
+
+    value = input(f"Enter {submenu_type} please: ")
+
+    if submenu_type in valid_values and value not in valid_values[submenu_type]:
+        print(f"Invalid {submenu_type}: {value}. Allowed: {', '.join(valid_values[submenu_type])}")
+    else:
         self.fetch_headlines(submenu_type, value)
 
     
@@ -77,13 +95,16 @@ class NewsClient:
             request = json.dumps({"option": "headlines", "params": {submenu_type: value}})
             self.client_socket.sendall(request.encode())
 
-            response = json.loads(self.client_socket.recv(1024).decode())
+            response = self.client_socket.recv(1024).decode()
+            response = json.loads(response)
 
-            if isinstance(response, list):  # Successful response
+            if isinstance(response, list) and response:
                 for item in response:
                     print(f"- {item['title']} (Source: {item['source_name']})")
-            else:  # Error response
-                print("Error:", response.get('message', 'Unknown error'))
+            elif isinstance(response, dict) and "message" in response:
+                print("Error:", response["message"])
+            else:
+                print("No headlines found for your query.")
         except (socket.error, json.JSONDecodeError) as e:
             print(f"Failed to fetch headlines: {e}")
 
@@ -105,9 +126,14 @@ class NewsClient:
     def display_source_submenu_types(self):
         #Display the list of submenus available for listing sources.
         print("Source Submenu Types:")
-        self.source_submenu_types = ["category", "language", "country", "Back to main menu"]
-        for i, submenu_type in enumerate(self.source_submenu_types, start=1):
-            print(f"{i}. {submenu_type}")
+        self.source_submenu_types = [
+        "category (Allowed: business, general, health, science, sports, technology)",
+        "language (Allowed: en, ar)",
+        "country (Allowed: au, ca, jp, ae, sa, kr, us, ma)",
+        "Back to main menu",
+    ]
+    for i, submenu_type in enumerate(self.source_submenu_types, start=1):
+        print(f"{i}. {submenu_type}")
 
 
     def fetch_sources(self, submenu_type):
