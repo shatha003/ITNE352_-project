@@ -58,7 +58,7 @@ class NewsClient:
     def display_headline_submenu_types(self):
         #Display the list of submenus available for headline search.
         print("Headline Submenu Types:")
-        self.headline_submenu_types = ["country", "category", "language", "sources", "keyword", "page_size"]
+        self.headline_submenu_types = ["country", "category", "language", "sources", "keyword", "page_size", "Back to main menu"]
         for i, submenu_type in enumerate(self.headline_submenu_types, start=1):
             print(f"{i}. {submenu_type}")
     
