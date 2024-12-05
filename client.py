@@ -65,26 +65,11 @@ class NewsClient:
     
     def process_headline_submenu_type(self, submenu_type):
         #Process the submenu input and fetch headlines accordingly.
-        if submenu_type == "country":
-            country = input("Enter (country) please: ")
-            self.fetch_headlines(submenu_type, country)
-        elif submenu_type == "category":
-            category = input("Enter (category) please: ")
-            self.fetch_headlines(submenu_type, category)
-        elif submenu_type == "language":
-            language = input("Enter (language) please: ")
-            self.fetch_headlines(submenu_type, language)
-        elif submenu_type == "sources":
-            sources = input("Enter (sources) please: ")
-            self.fetch_headlines(submenu_type, sources)
-        elif submenu_type == "keyword":
-            keyword = input("Enter (keyword) please: ")
-            self.fetch_headlines(submenu_type, keyword)
-        elif submenu_type == "page_size":
-            page_size = input("Enter (page size) please: ")
-            self.fetch_headlines(submenu_type, page_size)
         if submenu_type == "Back to main menu":
             return
+        
+        value = input(f"Enter {submenu_type} please: ")
+        self.fetch_headlines(submenu_type, value)
 
     
     def fetch_headlines(self, submenu_type, value):
