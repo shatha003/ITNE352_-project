@@ -125,17 +125,16 @@ class NewsClient:
     def fetch_sources(self, submenu_type):
         #Fetch the sources based on the selected submenu type.
         if submenu_type == "category":
-            category = input("Enter (category) please: ")
-            request = json.dumps({"option": "sources", "params": {submenu_type: category}})
+            value = input("Enter (category) please: ")
         elif submenu_type == "language":
-            language = input("Enter (language) please: ")
-            request = json.dumps({"option": "sources", "params": {submenu_type: category}})
+            value = input("Enter (language) please: ")
         elif submenu_type == "country":
-            country = input("Enter (country) please: ")
-            request = json.dumps({"option": "sources", "params": {submenu_type: category}})
+            value = input("Enter (country) please: ")
         else:
             return
-
+        
+        request = json.dumps({"option": "sources", "params": {submenu_type: value}})
+        
         # Send the request to the server
         self.client_socket.sendall(request.encode())
 
