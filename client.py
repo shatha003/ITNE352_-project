@@ -152,8 +152,8 @@ class NewsClient:
 
 
 if __name__ == "__main__":
-    HOST = 'localhost'  
-    PORT = 4000         
+    HOST = '127.0.0.1'  
+    PORT = 12346
     news_client = NewsClient(HOST, PORT)  
     news_client.run()  
 
