@@ -14,7 +14,10 @@ class NewsClient:
         self.client_name = input("Enter your name: ")
         self.client_socket.sendall(self.client_name.encode())
         self.request_types = ["Search Headlines", "List Sources", "Quit"]
-    
+
+        self.headline_submenu_types = ["country", "category", "language", "sources", "keyword", "page_size", "Back to main menu"]
+        self.source_submenu_types = ["category", "language", "country", "Back to main menu"]
+
     def run(self):
         #run the client loop and handle user input. 
         while True:
@@ -59,15 +62,6 @@ class NewsClient:
     def display_headline_submenu_types(self):
         #Display the list of submenus available for headline search.
         print("Headline Submenu Types:")
-        self.headline_submenu_types = [
-        "language (Allowed: en, ar)",
-        "country (Allowed: au, ca, jp, ae, sa, kr, us, ma)",
-        "category (Allowed: business, general, health, science, sports, technology)",
-        "sources",
-        "keyword",
-        "page_size",
-        "Back to main menu",
-    ]
     for i, submenu_type in enumerate(self.headline_submenu_types, start=1):
         print(f"{i}. {submenu_type}")
     
@@ -124,14 +118,7 @@ class NewsClient:
     
 
     def display_source_submenu_types(self):
-        #Display the list of submenus available for listing sources.
         print("Source Submenu Types:")
-        self.source_submenu_types = [
-        "category (Allowed: business, general, health, science, sports, technology)",
-        "language (Allowed: en, ar)",
-        "country (Allowed: au, ca, jp, ae, sa, kr, us, ma)",
-        "Back to main menu",
-    ]
     for i, submenu_type in enumerate(self.source_submenu_types, start=1):
         print(f"{i}. {submenu_type}")
 
