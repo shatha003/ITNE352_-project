@@ -73,16 +73,19 @@ class NewsClient:
 
     
     def fetch_headlines(self, submenu_type, value):
-        request = json.dumps({"option": "headlines", "params": {submenu_type: value}})
-        self.client_socket.sendall(request.encode())
+        try:
+            request = json.dumps({"option": "headlines", "params": {submenu_type: value}})
+            self.client_socket.sendall(request.encode())
 
-        response = json.loads(self.client_socket.recv(1024).decode())
+            response = json.loads(self.client_socket.recv(1024).decode())
 
-        if isinstance(response, list):  # Successful response
-             for item in response:
-                 print(f"- {item['title']} (Source: {item['source_name']})")  # For headlines
-        else:  # Error response
-            print("Error:", response.get('message', 'Unknown error'))
+            if isinstance(response, list):  # Successful response
+                for item in response:
+                    print(f"- {item['title']} (Source: {item['source_name']})")
+            else:  # Error response
+                print("Error:", response.get('message', 'Unknown error'))
+        except (socket.error, json.JSONDecodeError) as e:
+            print(f"Failed to fetch headlines: {e}")
 
     
 
