@@ -91,10 +91,7 @@ class NewsClient:
         self.client_socket.sendall(request.encode())
 
 
-        # Receive the response from the server
-        response = json.loads(self.client_socket.recv(1024).decode())
-
-        # Display the fetched headlines
+       
         response = json.loads(self.client_socket.recv(1024).decode())
 
         if isinstance(response, list):  # Successful response
