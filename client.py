@@ -62,8 +62,8 @@ class NewsClient:
     def display_headline_submenu_types(self):
         #Display the list of submenus available for headline search.
         print("Headline Submenu Types:")
-    for i, submenu_type in enumerate(self.headline_submenu_types, start=1):
-        print(f"{i}. {submenu_type}")
+        for i, submenu_type in enumerate(self.headline_submenu_types, start=1):
+            print(f"{i}. {submenu_type}")
     
     def process_headline_submenu_type(self, submenu_type):
         #Process the submenu input and fetch headlines accordingly.
@@ -74,14 +74,14 @@ class NewsClient:
         "language": ["en", "ar"],
         "country": ["au", "ca", "jp", "ae", "sa", "kr", "us", "ma"],
         "category": ["business", "general", "health", "science", "sports", "technology"],
-    }
+        }
 
-    value = input(f"Enter {submenu_type} please: ")
+        value = input(f"Enter {submenu_type} please: ")
 
-    if submenu_type in valid_values and value not in valid_values[submenu_type]:
-        print(f"Invalid {submenu_type}: {value}. Allowed: {', '.join(valid_values[submenu_type])}")
-    else:
-        self.fetch_headlines(submenu_type, value)
+        if submenu_type in valid_values and value not in valid_values[submenu_type]:
+            print(f"Invalid {submenu_type}: {value}. Allowed: {', '.join(valid_values[submenu_type])}")
+        else:
+            self.fetch_headlines(submenu_type, value)
 
     
     def fetch_headlines(self, submenu_type, value):
@@ -93,7 +93,8 @@ class NewsClient:
             response = json.loads(response)
 
             if isinstance(response, list) and response:
-                for item in response:
+                # Limit results to a maximum of 15
+                for item in response[:15]:
                     print(f"- {item['title']} (Source: {item['source_name']})")
             elif isinstance(response, dict) and "message" in response:
                 print("Error:", response["message"])
@@ -119,12 +120,12 @@ class NewsClient:
 
     def display_source_submenu_types(self):
         print("Source Submenu Types:")
-    for i, submenu_type in enumerate(self.source_submenu_types, start=1):
-        print(f"{i}. {submenu_type}")
+        for i, submenu_type in enumerate(self.source_submenu_types, start=1):
+            print(f"{i}. {submenu_type}")
 
 
     def fetch_sources(self, submenu_type):
-        #Fetch the sources based on the selected submenu type.
+        # Fetch the sources based on the selected submenu type.
         if submenu_type == "category":
             value = input("Enter (category) please: ")
         elif submenu_type == "language":
@@ -145,13 +146,15 @@ class NewsClient:
             response = json.loads(response)
         except socket.timeout:
             print("The server took too long to respond. Please try again later.")
+            return
         except json.JSONDecodeError:
             print("Error decoding server response.")
+            return
 
-        # Display the fetched sources
+        # Display the fetched sources, limiting to 15 results
         if response.get('status') == 'ok':
             Console().print(f"[bold green]Fetched {len(response['sources'])} sources![/bold green]")
-            for source in response['sources']:
+            for source in response['sources'][:15]:  # Limit to 15 sources
                 print(f"- {source['name']} (Category: {source['category']}, Language: {source['language']}, Country: {source['country']})")
         else:
             print("No sources found or error in request.")
