@@ -43,6 +43,7 @@ json: Used for the transmission of json data.
 
 We have installed the required libraries by using the command:
 “pip install requests”
+
 ---
 How to Run:
 -Server:
@@ -54,14 +55,13 @@ It provides services for several clients at the same time by making threads for 
 
 -Client:
 Connect to the Server: For this you need to run the client script and it will prompt you to enter a name, which you should do: “python client.py”
-
 Main Menu Options:
 Search Headlines: Have the capability to search and filter headlines by keyword, category, or country.
 List Sources: Aid in the search for news sources based on Category, Country and Language.
 Quit: Terminate the connection to the server.
----
-The Scripts
 
+---
+The Scripts:
 1- Server Script:
 The server script implements the following functionality:
 Track connected clients: Monitors active clients through multithreading and processes requests made through them.
@@ -84,12 +84,12 @@ search_headlines(): News headlines are searchable for the user.
 list_sources(): News sources will be returned based on parameters asked in queries.
 send_request(option, params): Sends a specific request to the server from the client.
 display_response(response): The obtained response from the server is exhibited.
----
+
 Additional Concepts:
 Multithreading: In order to allow the simultaneous connection of several clients, the server employs the threading module provided by Python.
 Error Handling: The client and server scripts are able to cope with a number of errors thus providing the user with an experience without complications.
 API Integration: The system provides connectivity to NewsAPI.org in order to receive certain news headlines and news sources as per the user’s discretion.
----
+
 Acknowledgments:
 News API, which is Agence France Presse, provided the news data API.
 Networked applications could be built with the assistance of Python.
