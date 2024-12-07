@@ -12,7 +12,7 @@ Due Date: Saturday, December 7, 2024
 
 Group Information
 
-**Group Name:** Network Programming Group 1  
+**Group Name:** Network Programming Group A14  
 **Course Code:** ITCE320  
 **Section:** S1  
 **Students:**  
