@@ -43,7 +43,7 @@ json: Used for the transmission of json data.
 
 We have installed the required libraries by using the command:
 “pip install requests”
-
+--------------------
 How to Run:
 -Server:
 Start the Server:
@@ -59,7 +59,7 @@ Main Menu Options:
 Search Headlines: Have the capability to search and filter headlines by keyword, category, or country.
 List Sources: Aid in the search for news sources based on Category, Country and Language.
 Quit: Terminate the connection to the server.
-
+-----------------------------------------------
 The Scripts
 
 1- Server Script:
@@ -78,23 +78,23 @@ start_server(): Implements the server and waits for the clients to interact with
 The client script is designed to connect with the server, request for services and view the results.
 Main Menu: Searching for headlines or sources of the news to fetch.
 Response Handling: Represents the news headlines or sources based on the response of the server.
-
+----------------------
 Key functions:
 search_headlines(): News headlines are searchable for the user.
 list_sources(): News sources will be returned based on parameters asked in queries.
 send_request(option, params): Sends a specific request to the server from the client.
 display_response(response): The obtained response from the server is exhibited.
-
+----------------------
 Additional Concepts:
 Multithreading: In order to allow the simultaneous connection of several clients, the server employs the threading module provided by Python.
 Error Handling: The client and server scripts are able to cope with a number of errors thus providing the user with an experience without complications.
 API Integration: The system provides connectivity to NewsAPI.org in order to receive certain news headlines and news sources as per the user’s discretion.
-
+-------------------
 Acknowledgments:
 News API, which is Agence France Presse, provided the news data API.
 Networked applications could be built with the assistance of Python.
 Versioning and cooperative development were aided by GitHub.
-
+------------------------
 Conclusion
 One of the goals of this project was to prove that it is possible to create a multithreaded client-server system interfaced with an
 external API and networked with each other.The system is simple to understand, easy to grow,and firm enough to allow more than one
