@@ -2,7 +2,7 @@ import socket
 import json
 
 class NewsClient:
-    def _init_(self, host, port):
+    def __init__(self, host, port):  
         self.host = host
         self.port = port
         self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -84,8 +84,6 @@ class NewsClient:
         else:
             print(response.get("message", "An error occurred."))
 
-            #
-
     def display_headline_details(self, headline):
         print("\n--- Headline Details ---")
         print(f"Title: {headline['title']}")
@@ -121,9 +119,4 @@ class NewsClient:
 if __name__ == "__main__":
     HOST = "127.0.0.1"
     PORT = 12346
-    NewsClient(HOST,PORT)  
-
-
-
-        
-
+    NewsClient(HOST, PORT)
