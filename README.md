@@ -1,47 +1,35 @@
-Multithread News Client/Server Information System
-----------------------
+ Multithreaded News Client/Server Information System
+
 Project Abstract:
-In this project, we created a Multithreaded News Client Server Information System in python. 
-The general purpose was to create a system which enables customer-side users to fetch and browse the latest news information which is made available by a server that sources this information from NewsAPI.org.
-The server is able to use multiple threads to provide services to more than one client at the same time. There are a number of clients who connect to the server and make requests for specific news.
-Clients make such requests and the server responds with availing news items of different categories such as headlines, sources and details. The client reformats these items to suit a user architecture.
-This system focuses on client-server architecture, networking, and multithreading.
+This project implements a **Multithreaded News Client-Server Information System** in Python. The system allows clients to request and view the latest news sourced from [NewsAPI.org](https://newsapi.org/). The server uses multithreading to handle multiple client connections simultaneously, providing services such as searching for news headlines, listing news sources, and retrieving detailed news. The system focuses on client-server architecture, networking, and multithreading.
 
-Course: ITCE320 - Network Programming
-Term: Semester 1, 2024-2025
-Instructor: Dr. Mohammed Almeer
-Due Date: Saturday, December 7, 2024
+Course: ITCE320 - Network Programming  
+Term: Semester 1, 2024-2025  
+Instructor: Dr. Mohammed Almeer  
+Due Date: Saturday, December 7, 2024  
 
+---
 
-Group Information:
-Group Name: Network Programming Group 1
-Course Code: ITCE320
-Section: S1
-Students:
-Student 1: [shatha ebarahem ], [202103023]
-Student 2: [Bayan isa ], [202202026]
+Group Information
 
+**Group Name:** Network Programming Group 1  
+**Course Code:** ITCE320  
+**Section:** S1  
+**Students:**  
+- **Student 1:** Shatha Ebarahem [202103023]  
+- **Student 2:** Bayan Isa [202202026]
 
-Table of Contents:
--Requirements
--How to Run
--The Scripts
--Additional Concepts
--Acknowledgments
--Conclusion
+---
 
-----------
-
-Requirements:
-The following dependencies and tools need to be installed in order to operate this project:
-
+Requirements
 Python Libraries:
-socket: Used for the creation of TCP connections.
-requests: Used to get news information from the newsapi.org.
-json: Used for the transmission of json data.
+- socket: For TCP connections.
+- requests: To fetch news data from [NewsAPI.org](https://newsapi.org/).
+- json: To transmit JSON data.
 
-We have installed the required libraries by using the command:
-“pip install requests”
+To install the required libraries, run:
+>>pip install requests<<
+
 
 ---
 How to Run:
