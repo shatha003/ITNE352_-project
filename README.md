@@ -32,58 +32,48 @@ To install the required libraries, run:
 
 
 ---
-How to Run:
--Server:
-Start the Server:
-To start the server run the server script: “python server.py” >>> Server is now started and will check for connections from clients on port 12346.
-Handling Client Requests:
-The server is capable of providing three essential services: searching news headlines, listing sources and detailed information.
-It provides services for several clients at the same time by making threads for each client connection.
+How to Run
+Server:
+Start the server by running the following command:
 
--Client:
-Connect to the Server: For this you need to run the client script and it will prompt you to enter a name, which you should do: “python client.py”
-Main Menu Options:
-Search Headlines: Have the capability to search and filter headlines by keyword, category, or country.
-List Sources: Aid in the search for news sources based on Category, Country and Language.
-Quit: Terminate the connection to the server.
+bash
+Copy code
+python server.py
+The server will listen for incoming client connections on port 12346 and handle requests using multithreading.
 
+Client:
+Run the client script to connect to the server:
 
-The Scripts:
-1- Server Script:
-The server script implements the following functionality:
-Track connected clients: Monitors active clients through multithreading and processes requests made through them.
-Access news source through NewsAPI: Makes requests to NewsAPI.org for obtaining new sources and stories.
-Check formatting of user requests: Makes sure that the parameters in the requests are included before making the requests.
+bash
+Copy code
+python client.py
+The client will prompt for your name and then display a menu with options to:
 
-Key functions:
-fetch_news_data ( endpoint : str , params : Dict[str, str] ): Calls the client address on the API for news and return response from the server.
-validate_params(params): Validates the input parameters that clients fed the API.
-handle_client(client_socket, client_address): Handles any communication with the respective client.
-start_server(): Implements the server and waits for the clients to interact with the server.
+Search Headlines: Filter news headlines by keyword, category, or country.
+List Sources: View news sources based on parameters like category, country, and language.
+Quit: Disconnect from the server.
+The Scripts
+Server Script:
+The server handles client connections and fetches news from NewsAPI. Key functions include:
 
-2-Client Script:
-The client script is designed to connect with the server, request for services and view the results.
-Main Menu: Searching for headlines or sources of the news to fetch.
-Response Handling: Represents the news headlines or sources based on the response of the server.
+fetch_news_data(endpoint, params): Fetches news based on parameters.
+validate_params(params): Validates the request parameters.
+handle_client(client_socket, client_address): Manages communication with each client.
+start_server(): Starts the server and listens for connections.
+Client Script:
+The client connects to the server and displays results. Key functions include:
 
-
-Key functions:
-search_headlines(): News headlines are searchable for the user.
-list_sources(): News sources will be returned based on parameters asked in queries.
-send_request(option, params): Sends a specific request to the server from the client.
-display_response(response): The obtained response from the server is exhibited.
-
-Additional Concepts:
-Multithreading: In order to allow the simultaneous connection of several clients, the server employs the threading module provided by Python.
-Error Handling: The client and server scripts are able to cope with a number of errors thus providing the user with an experience without complications.
-API Integration: The system provides connectivity to NewsAPI.org in order to receive certain news headlines and news sources as per the user’s discretion.
-
-Acknowledgments:
-News API, which is Agence France Presse, provided the news data API.
-Networked applications could be built with the assistance of Python.
-Versioning and cooperative development were aided by GitHub.
-
+search_headlines(): Searches for news headlines.
+list_sources(): Lists available news sources.
+send_request(option, params): Sends requests to the server.
+display_response(response): Displays the server's response.
+Additional Concepts
+Multithreading: The server uses Python's threading module to handle multiple clients simultaneously.
+Error Handling: Both client and server scripts handle errors to ensure smooth operation.
+API Integration: The system integrates with NewsAPI.org to retrieve news.
+Acknowledgments
+NewsAPI: Provided the news data.
+Python: Used for networking and multithreading.
+GitHub: Used for version control and collaboration.
 Conclusion
-One of the goals of this project was to prove that it is possible to create a multithreaded client-server system interfaced with an
-external API and networked with each other.The system is simple to understand, easy to grow,and firm enough to allow more than one
-client at the same time.This project enabled the team to acquire practical knowledge about networking, multithreading and API integrations.
+This project demonstrates the ability to create a multithreaded client-server system that interacts with an external API, providing real-time news data to clients. It enabled the team to gain practical experience in networking, multithreading, and API integration.
