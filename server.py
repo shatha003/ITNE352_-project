@@ -60,18 +60,7 @@ def handle_client(client_socket, client_address):
                 client_socket.send(json.dumps(response).encode())
                 continue
 
-
-            # choose endpoint based on request
-            if option == "headlines":
-                endpoint = "top-headlines"
-            elif option == "sources":
-                endpoint = "sources"
-            else:
-                response = {"status": "error", "message": "Invalid option"}
-                client_socket.send(json.dumps(response).encode())
-                continue
-
-             # Choose endpoint based on request
+            # Choose endpoint based on request
             endpoint = "top-headlines" if option == "headlines" else "sources" if option == "sources" else None
             if not endpoint:
                 response = {"status": "error", "message": "Invalid option"}
@@ -80,7 +69,7 @@ def handle_client(client_socket, client_address):
 
             api_response = fetch_news_data(endpoint, params)
 
-            # save response to a JSON file for testing
+            # Save response to a JSON file for testing
             with open(f"{client_name}_{option}.json", "w") as file:
                 json.dump(api_response, file, indent=4)
 
@@ -117,6 +106,6 @@ def start_server():
         print("\n[INFO] Server shutting down.")
     finally:
         server_socket.close()
-        
+
 if __name__ == "__main__":
     start_server()
