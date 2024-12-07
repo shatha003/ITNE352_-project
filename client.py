@@ -2,8 +2,7 @@ import socket
 import json
 
 class NewsClient:
-    def __init__(self, host, port):
-        #Initialize the client, connect to the server and set up the necessary variables.
+    def _init_(self, host, port):
         self.host = host
         self.port = port
         self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -12,9 +11,7 @@ class NewsClient:
         self.client_socket.sendall(self.client_name.encode())
         self.main_menu()
 
-
     def main_menu(self):
-        #run the client loop and handle user input 
         while True:
             print("\nMain Menu:")
             print("1. Search Headlines")
@@ -33,9 +30,7 @@ class NewsClient:
             else:
                 print("Invalid choice. Try again.")
 
-    
     def search_headlines(self):
-        # handle searching for headlines based on various criteria.
         params = {}
         print("\nHeadlines Menu:")
         print("1. Search by Keyword")
@@ -49,7 +44,7 @@ class NewsClient:
         elif choice == "2":
             params["category"] = input("Enter category: ")
         elif choice == "3":
-            params["country"] = input("Enter country: ")
+            params["country"] = input("Enter country code (e.g., 'us', 'ae'): ")
         elif choice == "4":
             return
         else:
@@ -57,19 +52,49 @@ class NewsClient:
             return
 
         self.send_request("headlines", params)
-    
+
     def send_request(self, option, params):
         try:
             request = {"option": option, "params": params}
             self.client_socket.sendall(json.dumps(request).encode())
-            response = self.client_socket.recv(4096).decode()
+            response = self.client_socket.recv(8192).decode()
             response = json.loads(response)
             self.display_response(response)
         except (socket.error, json.JSONDecodeError) as e:
             print(f"Error: {e}")
 
+    def display_response(self, response):
+        if isinstance(response, list):
+            if not response:
+                print("No results found.")
+                return
+
+            print("\nSelect a headline to view details:")
+            for idx, item in enumerate(response, 1):
+                print(f"{idx}. {item['title']} (Source: {item['source_name']})")
+
+            try:
+                choice = int(input("\nEnter the number of the headline (1-15): ")) - 1
+                if 0 <= choice < len(response):
+                    self.display_headline_details(response[choice])
+                else:
+                    print("Invalid choice. Returning to menu.")
+            except ValueError:
+                print("Invalid input. Returning to menu.")
+        else:
+            print(response.get("message", "An error occurred."))
+
+            #
+
+    def display_headline_details(self, headline):
+        print("\n--- Headline Details ---")
+        print(f"Title: {headline['title']}")
+        print(f"Source: {headline['source_name']}")
+        print(f"Description: {headline.get('description', 'No description available.')}")
+        print(f"URL: {headline.get('url', 'No URL available.')}")
+        input("\nPress Enter to return to the main menu...")
+
     def list_sources(self):
-        #Method to handle listing sources based on user criteria.
         params = {}
         print("\nSources Menu:")
         print("1. Search by Category")
@@ -92,22 +117,8 @@ class NewsClient:
 
         self.send_request("sources", params)
 
-    def display_response(self, response):
-        if isinstance(response, list):
-            for item in response:
-                print(f"- {item}")
-        elif isinstance(response, dict):
-            print(response.get("message", "No results found."))
-        else:
-            print("Unexpected response format.")
-
 
 if __name__ == "__main__":
     HOST = "127.0.0.1"
     PORT = 12346
-    NewsClient(HOST,PORT)  
-
-
-
-        
-
+    NewsClient(HOST,PORT)
