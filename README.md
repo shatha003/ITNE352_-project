@@ -12,7 +12,7 @@ Course: ITCE320 - Network Programming
 Term: Semester 1, 2024-2025
 Instructor: Dr. Mohammed Almeer
 Due Date: Saturday, December 7, 2024
-------
+
 
 Group Information:
 Group Name: Network Programming Group 1
@@ -22,7 +22,7 @@ Students:
 Student 1: [shatha ebarahem ], [202103023]
 Student 2: [Bayan isa ], [202202026]
 
-------
+
 
 Table of Contents:
 Requirements
