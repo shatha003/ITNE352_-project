@@ -95,7 +95,7 @@ Acknowledgments:
 News API, which is Agence France Presse, provided the news data API.
 Networked applications could be built with the assistance of Python.
 Versioning and cooperative development were aided by GitHub.
----
+
 Conclusion
 One of the goals of this project was to prove that it is possible to create a multithreaded client-server system interfaced with an
 external API and networked with each other.The system is simple to understand, easy to grow,and firm enough to allow more than one
