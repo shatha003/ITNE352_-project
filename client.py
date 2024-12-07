@@ -14,7 +14,7 @@ class NewsClient:
 
 
     def main_menu(self):
-        #run the client loop and handle user input. 
+        #run the client loop and handle user input 
         while True:
             print("\nMain Menu:")
             print("1. Search Headlines")
