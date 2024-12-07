@@ -6,7 +6,6 @@ The general purpose was to create a system which enables customer-side users to 
 The server is able to use multiple threads to provide services to more than one client at the same time. There are a number of clients who connect to the server and make requests for specific news.
 Clients make such requests and the server responds with availing news items of different categories such as headlines, sources and details. The client reformats these items to suit a user architecture.
 This system focuses on client-server architecture, networking, and multithreading.
---------------------------
 
 Course: ITCE320 - Network Programming
 Term: Semester 1, 2024-2025
@@ -21,7 +20,6 @@ Section: S1
 Students:
 Student 1: [shatha ebarahem ], [202103023]
 Student 2: [Bayan isa ], [202202026]
-
 
 
 Table of Contents:
