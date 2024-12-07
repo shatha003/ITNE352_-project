@@ -23,12 +23,12 @@ Student 2: [Bayan isa ], [202202026]
 
 
 Table of Contents:
-Requirements
-How to Run
-The Scripts
-Additional Concepts
-Acknowledgments
-Conclusion
+-Requirements
+-How to Run
+-The Scripts
+-Additional Concepts
+-Acknowledgments
+-Conclusion
 
 ----------
 
