@@ -60,7 +60,7 @@ Search Headlines: Have the capability to search and filter headlines by keyword,
 List Sources: Aid in the search for news sources based on Category, Country and Language.
 Quit: Terminate the connection to the server.
 
----
+
 The Scripts:
 1- Server Script:
 The server script implements the following functionality:
@@ -74,11 +74,12 @@ validate_params(params): Validates the input parameters that clients fed the API
 handle_client(client_socket, client_address): Handles any communication with the respective client.
 start_server(): Implements the server and waits for the clients to interact with the server.
 
-2- Client Script:
+2-Client Script:
 The client script is designed to connect with the server, request for services and view the results.
 Main Menu: Searching for headlines or sources of the news to fetch.
 Response Handling: Represents the news headlines or sources based on the response of the server.
----
+
+
 Key functions:
 search_headlines(): News headlines are searchable for the user.
 list_sources(): News sources will be returned based on parameters asked in queries.
