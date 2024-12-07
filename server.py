@@ -56,6 +56,14 @@ def handle_client(client_socket, client_address):
             params = request.get("params", {})
             print(f"[INFO] {client_name} requested {option} with params: {params}")
 
+            # Validate parameters
+            validation_errors = validate_params(params)
+            if validation_errors:
+                response = {"status": "error", "message": "; ".join(validation_errors)}
+                client_socket.send(json.dumps(response).encode())
+                continue
+
+
             # choose endpoint based on request
             if option == "headlines":
                 endpoint = "top-headlines"
@@ -67,11 +75,8 @@ def handle_client(client_socket, client_address):
                 continue
 
              # Choose endpoint based on request
-            if option == "headlines":
-                endpoint = "top-headlines"
-            elif option == "sources":
-                endpoint = "sources"
-            else:
+            endpoint = "top-headlines" if option == "headlines" else "sources" if option == "sources" else None
+            if not endpoint:
                 response = {"status": "error", "message": "Invalid option"}
                 client_socket.send(json.dumps(response).encode())
                 continue
@@ -80,8 +85,7 @@ def handle_client(client_socket, client_address):
             api_response = fetch_news_data(endpoint, params)
 
             # save response to a JSON file for testing
-            filename = f"{client_name}_{option}_group.json"
-            with open(filename, "w") as file:
+            with open(f"{client_name}_{option}.json", "w") as file:
                 json.dump(api_response, file, indent=4)
 
             # prepare response to send to the client
