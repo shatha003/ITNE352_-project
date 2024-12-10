@@ -1,0 +1,71 @@
+{
+    "status": "ok",
+    "totalResults": 5,
+    "articles": [
+        {
+            "source": {
+                "id": "australian-financial-review",
+                "name": "Australian Financial Review"
+            },
+            "author": "Timothy Moore",
+            "title": "ASX 200 LIVE: Australian shares set to open higher on latest China stimulus hopes, RBA expected to hold cash rate steady",
+            "description": "Australian shares are set to open higher. RBA decision day. Iron ore, oil, gold gain. Bitcoin stumbles. Nvidia drags Nasdaq lower. Follow updates here.",
+            "url": "http://www.afr.com/markets/equity-markets/asx-to-rise-on-prospect-for-bolder-china-stimulus-20241210-p5kx4o",
+            "urlToImage": "https://static.ffx.io/images/$zoom_0.482%2C$multiply_2%2C$ratio_1.777778%2C$width_1059%2C$x_0%2C$y_0/t_crop_custom/c_scale%2Cw_800%2Cq_88%2Cf_jpg/t_afr_live_no_age_social_wm/d2ed388b634a7e3bea76d91e40517c422c2e564d",
+            "publishedAt": "2024-12-09T20:29:46Z",
+            "content": "Australian shares are poised to rise with commodities advancing on plans by China to do more to bolster flagging growth. The US listed shares of BHP and Rio Tinto each surged higher. The currency ral\u2026 [+1131 chars]"
+        },
+        {
+            "source": {
+                "id": "talksport",
+                "name": "TalkSport"
+            },
+            "author": "Liam Hoofe",
+            "title": "Best betting sites UK | Top betting site offers for October 2024...",
+            "description": "Sports bettors in the UK are spoiled for choice among the best betting sites: If you want in-depth football betting markets, there is a bookmaker for you; if you want to bet on esports or TV events\u2026",
+            "url": "https://talksport.com/betting/1760032/best-betting-sites-uk/",
+            "urlToImage": "https://talksport.com/wp-content/uploads/sites/5/2024/08/talksport-best-betting-sites-uk-op.jpg?strip=all&quality=100&w=1920&h=1080&crop=1",
+            "publishedAt": "2024-10-04T08:45:00Z",
+            "content": "Sports bettors in the UK are spoiled for choice among the best betting sites: If you want in-depth football betting markets, there is a bookmaker for you; if you want to bet on esports or TV events, \u2026 [+17381 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Tim De Chant",
+            "title": "Mycocycle uses mushrooms to upcycle old tires and construction waste | TechCrunch",
+            "description": "The startup's fungi use their mycelium to consume oil-based rubbers and plastics, creating new bio-based materials in the process.",
+            "url": "https://techcrunch.com/2024/05/08/mycocycle-uses-mushrooms-to-upcycle-old-tires-and-construction-waste/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2024/05/GettyImages-1350655821.jpeg?resize=1200,796",
+            "publishedAt": "2024-05-07T18:07:09Z",
+            "content": "Usually, when something starts to rot, it gets pitched in the trash. But Joanne Rodriguez wants to turn the concept of rot on its head by growing fungus on trash to turn it into something better.\r\nWe\u2026 [+4229 chars]"
+        },
+        {
+            "source": {
+                "id": "lequipe",
+                "name": "L'equipe"
+            },
+            "author": "L'EQUIPE",
+            "title": "Manchester City au complet pour la finale de la Ligue des champions",
+            "description": "Manchester City a d\u00e9voil\u00e9 un groupe de vingt-trois joueurs pour la finale de Ligue des champions samedi contre l'Inter Milan, \u00e0 Istanbul (21\u00a0heures).",
+            "url": "https://www.lequipe.fr/Football/Actualites/Manchester-city-au-complet-pour-la-finale-de-la-ligue-des-champions/1401522",
+            "urlToImage": "https://medias.lequipe.fr/img-photo-jpg/kyle-walker-est-present-dans-le-groupe-de-manchester-city-presse-sports/1500000001796010/0:0,1995:1330-640-427-75/57f76.jpg",
+            "publishedAt": "2023-06-08T14:46:51+00:00",
+            "content": "L'entra\u00eeneur de Manchester City Pep Guardiola devrait pouvoir compter sur toutes ses forces vives pour la finale de la Ligue des champions samedi \u00e0 Istanbul, contre l'Inter Milan (21\u00a0heures). Le club\u2026 [+235 chars]"
+        },
+        {
+            "source": {
+                "id": "new-scientist",
+                "name": "New Scientist"
+            },
+            "author": null,
+            "title": "Adding wild fungi to soil could make trees store more carbon",
+            "description": "A loblolly pine plantation in the state of Georgia is the test site for a start-up company trying to see if improving the fungi and other microbes in soil can help trees grow bigger and faster",
+            "url": "https://www.newscientist.com/article/2361604-adding-wild-fungi-to-soil-could-make-trees-store-more-carbon/",
+            "urlToImage": "https://images.newscientist.com/wp-content/uploads/2023/02/28175105/SEI_146112168.jpg",
+            "publishedAt": "2023-03-01T00:00:00Z",
+            "content": "By James Dinneen\r\nMycorrhizal fungi colonising a host plant\u2019s root tissues\r\nEmmanuel Lattes//Alamy\r\nA start-up has begun planting fungi and other microbes in soil collected from intact forests at a t\u2026 [+417 chars]"
+        }
+    ]
+}
