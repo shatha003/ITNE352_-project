@@ -112,8 +112,10 @@ class NewsClient:
                 self.reward_points(10)  # Reward points for viewing details
             elif option == "sources":
                 for idx, item in enumerate(response, start=1):
-                    source_name = item.get('source_name')
-                    print(f"{idx}.  {source_name} ")
+                    print(f"{idx}. {item['source_name']}")
+                choice = input("Enter your choice for more details or 'q' to go back: ")
+                if choice.lower() != 'q' and choice.isdigit() and 1 <= int(choice) <= len(response):
+                    self.display_source_details(response[int(choice) - 1])
         elif isinstance(response, dict):
             print(response.get("message", "No results found."))
         else:
@@ -126,6 +128,14 @@ class NewsClient:
         print(f"Source: {headline['source_name']}")
         print(f"Description: {headline.get('description', 'No description available.')}")
         print(f"URL: {headline.get('url', 'No URL available.')}")
+        input("\nPress Enter to return to the main menu...")
+    
+    def display_source_details(self, source):
+        # Display detailed information about a selected source.
+        print("\n--- Source Details ---")
+        print(f"Name: {source['source_name']}")
+        print(f"Description: {source.get('description', 'No description available.')}")
+        print(f"URL: {source.get('url', 'No URL available.')}")
         input("\nPress Enter to return to the main menu...")
 
     def reward_points(self, points):
