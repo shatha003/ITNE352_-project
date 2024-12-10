@@ -112,7 +112,8 @@ class NewsClient:
                 self.reward_points(10)  # Reward points for viewing details
             elif option == "sources":
                 for idx, item in enumerate(response, start=1):
-                    print(f"{idx}. {item['name']} (ID: {item['id']})")
+                    source_name = item.get('source_name')
+                    print(f"{idx}.  {source_name} ")
         elif isinstance(response, dict):
             print(response.get("message", "No results found."))
         else:
@@ -135,4 +136,4 @@ class NewsClient:
 if __name__ == "__main__":
     HOST = "127.0.0.1"
     PORT = 12346
-    NewsClient(HOST, PORT)
+    NewsClient(HOST,PORT)
